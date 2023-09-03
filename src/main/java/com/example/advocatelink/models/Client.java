@@ -15,7 +15,4 @@ public class Client {
     private String urlfoto;
     private String oab;
     private String areaAtuacao;
-    public void gerarId(long id){
-        this.id = id;
-    }
 }
