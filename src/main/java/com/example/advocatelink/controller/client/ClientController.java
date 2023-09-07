@@ -1,5 +1,7 @@
 package com.example.advocatelink.controller.client;
 import com.example.advocatelink.models.Client;
+import com.example.advocatelink.models.Contato;
+import com.example.advocatelink.models.Endereco;
 import com.example.advocatelink.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,17 @@ public class ClientController {
         clientService.inclui(client);
         return "html/result";
     }
+    @PostMapping("/api/add")
+    public ResponseEntity<String> adduser(@RequestBody Client clientRequest) {
+        try {
+            // Crie um novo cliente com base nos dados recebidos
+            clientService.inclui(clientRequest);
+            return new ResponseEntity<>("Usuário adicionado com sucesso", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Erro ao adicionar o usuário: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/api")
     public ResponseEntity< List<Client> >  getlist(){
         return ResponseEntity.ok(clientService.listar());

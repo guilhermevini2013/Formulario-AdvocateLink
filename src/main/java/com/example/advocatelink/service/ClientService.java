@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class ClientService implements Iservice<Client>{
-    static List<Client> clients = new ArrayList<>();
+    public static List<Client> clients = new ArrayList<>();
 
     @Override
     public Client inclui(Client item) {

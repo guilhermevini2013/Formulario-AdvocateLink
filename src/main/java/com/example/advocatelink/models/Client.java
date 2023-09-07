@@ -15,4 +15,5 @@ public class Client {
     private String urlfoto;
     private String oab;
     private String areaAtuacao;
+
 }
