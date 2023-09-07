@@ -39,19 +39,20 @@ public class ClientController {
             return new ResponseEntity<>("Erro ao adicionar o usuário: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @GetMapping("/api")
     public ResponseEntity< List<Client> >  getlist(){
         return ResponseEntity.ok(clientService.listar());
     }
     @DeleteMapping("/api/{id}")
     public ResponseEntity<Boolean> deletClient(@PathVariable Long id){
-
         return new ResponseEntity<>(clientService.deletar(id), HttpStatus.NO_CONTENT);
     }
     @PutMapping(value = "/api/{id}")
-    public ResponseEntity<Client> getClientbyname(@PathVariable Long id,@RequestBody Client client){
-
+    public ResponseEntity<Client> alterClientbyname(@PathVariable Long id,@RequestBody Client client){
         return ResponseEntity.ok(clientService.alterar(id,client));
+    }
+    @GetMapping("/api/get/{id}")
+    public ResponseEntity<Client> getClientbyid(@PathVariable Long id ){
+        return ResponseEntity.ok(clientService.selecionar(id));
     }
 }
