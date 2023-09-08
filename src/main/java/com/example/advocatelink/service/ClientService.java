@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ClientService implements Iservice<Client>{
+public class ClientService implements Iservice<Client> {
     public static List<Client> clients = new ArrayList<>();
 
     @Override
     public Client inclui(Client item) {
-        var id =clients.stream()
+        var id = clients.stream()
                 .mapToLong(Client::getId)
                 .max()
                 .orElse(0);
-        item.setId(id+1);
+        item.setId(id + 1);
         clients.add(item);
         return item;
     }
@@ -39,7 +39,7 @@ public class ClientService implements Iservice<Client>{
     public boolean deletar(Long id) {
         var retorno = getclient(id);
         clients.remove(retorno);
-        return retorno!=null;
+        return retorno != null;
     }
 
     @Override
@@ -51,8 +51,9 @@ public class ClientService implements Iservice<Client>{
     public Client selecionar(Long id) {
         return getclient(id);
     }
-    public Client getclient(Long id){
-        var retorno = clients.stream().filter(x->x.getId()==id).findFirst().orElse(null);
+
+    public Client getclient(Long id) {
+        var retorno = clients.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
         return retorno;
     }
 }
