@@ -40,7 +40,7 @@ public class ClientController {
         }
     }
     @GetMapping("/api")
-    public ResponseEntity< List<Client> >  getlist(){
+    public ResponseEntity< List<Client> > getlist(){
         return ResponseEntity.ok(clientService.listar());
     }
     @DeleteMapping("/api/{id}")
